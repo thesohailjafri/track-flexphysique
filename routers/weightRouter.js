@@ -3,9 +3,9 @@
 const express = require('express')
 const router = express.Router()
 const {
-    getWeightTimeline
+    getWeightTimeline, logWeight
 } = require('../controllers/weightController')
 
-router.route('/').get(getWeightTimeline)
+router.route('/').get(getWeightTimeline).post(logWeight)
 
 module.exports = router
