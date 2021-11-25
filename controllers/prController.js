@@ -4,7 +4,7 @@ const Weight = require('../models/weightModel')
 const { StatusCodes } = require('http-status-codes')
 const { query } = require('express')
 
-const getPrTimeline = async (req, res) => {
+const getPersonRecords = async (req, res) => {
     const { userId } = req.user
     const { liftedReps, sort, fields, liftedWeight } = req.query
     const queryObject = {}
@@ -35,29 +35,68 @@ const getPrTimeline = async (req, res) => {
         result = result.select(fieldsList)
     }
 
-    const prLogs = await result
-
-
-    res.send(prLogs)
+    const logRecord = await result
+    res.status(StatusCodes.OK).json(logRecord)
 }
 
 
 
-const logPr = async (req, res) => {
-    const { liftedWeight, liftedReps, date } = req.body
+const logPersonRecord = async (req, res) => {
+    const { liftedWeight, liftedReps, exerciseName, date } = req.body
     if (!liftedWeight || typeof liftedWeight !== 'number' ||
-        !liftedReps || typeof liftedReps !== 'number') {
-        throw new error.BadRequestError('Invalid lifted-weight or lifted-reps')
+        !liftedReps || typeof liftedReps !== 'number' || !exerciseName) {
+        throw new error.BadRequestError('Invalid liftedWeight or liftedReps or exerciseName')
     }
     const { userId } = req.user
     const currentWeight = await Weight.findOne({ userId }, { userWeight: 1 })
     const newPrLog = await Pr.create({
-        userId, date, liftedWeight,
-        liftedReps, userWeight: currentWeight.userWeight
+        userId,
+        date,
+        liftedWeight,
+        exerciseName,
+        liftedReps,
+        userWeight: currentWeight.userWeight
     })
     res.status(StatusCodes.CREATED).json(newPrLog)
 }
 
+const updatePersonRecord = async (req, res) => {
+    const { id: logId } = req.params
+    if (!logId) {
+        throw new error.BadRequestError('Invalid id')
+    }
+
+    const { userId } = req.user
+    const updatedRecord = await Weight.findOneAndUpdate({
+        _id: logId,
+        userId
+    }, req.body, {
+        new: true,
+        runValidators: true
+    })
+
+    res.status(StatusCodes.OK).json(updatedRecord)
+}
+
+const removePersonRecord = async (req, res) => {
+    const { id: logId } = req.params
+    if (!logId) {
+        throw new error.BadRequestError('Invalid id')
+    }
+
+    const { userId } = req.user
+    const removedRecord = await Weight.findOneAndRemove({
+        _id: logId,
+        userId
+    })
+
+    res.status(StatusCodes.OK).json(removedRecord)
+}
+
+
+
+
+
 module.exports = {
-    getPrTimeline, logPr
+    getPersonRecords, logPersonRecord, updatePersonRecord, removePersonRecord
 }

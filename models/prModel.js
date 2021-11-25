@@ -10,6 +10,11 @@ const schema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    exerciseName: {
+        type: String,
+        required: true,
+        uppercase: true
+    },
     liftedWeight: {
         type: Number,
         required: true

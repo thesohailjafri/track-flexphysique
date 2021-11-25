@@ -2,9 +2,13 @@ const express = require('express')
 const router = express.Router()
 
 const {
-    getPrTimeline, logPr, getArmTimeline
+    getPersonRecords, logPersonRecord, updatePersonRecord, removePersonRecord
 } = require('../controllers/prController')
 
-router.route('/').get(getPrTimeline).post(logPr)
+router.route('/')
+    .get(getPersonRecords)
+    .post(logPersonRecord)
+    .patch(updatePersonRecord)
+    .delete(removePersonRecord)
 
 module.exports = router
