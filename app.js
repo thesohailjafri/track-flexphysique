@@ -6,6 +6,8 @@ const app = express()
 //routers
 const authRouter = require('./routers/authRouter')
 const weightRouter = require('./routers/weightRouter')
+const prRouter = require('./routers/prRouter')
+
 
 
 
@@ -40,6 +42,8 @@ app.get('/', (req, res) => { res.send('Having a good day ee') })
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/weight', authenticationMiddleware, weightRouter)
+app.use('/api/v1/pr', authenticationMiddleware, prRouter)
+
 
 
 //end-middelware

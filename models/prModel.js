@@ -10,11 +10,23 @@ const schema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    liftedWeight: {
+        type: Number,
+        required: true
+    },
+    liftedReps: {
+        type: Number,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now()
     }
-})
+},
+    {
+        timestamps: true
+    }
+)
 
 
-module.exports = mongoose.model('weight', schema)
+module.exports = mongoose.model('personal-records', schema)

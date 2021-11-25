@@ -39,4 +39,4 @@ schema.methods.comparePassword = async function (canditatePassword) {
     return isMatch
 }
 
-module.exports = mongoose.model('User', schema)
+module.exports = mongoose.model('user', schema)

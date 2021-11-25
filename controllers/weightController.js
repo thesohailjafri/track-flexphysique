@@ -9,14 +9,13 @@ const getWeightTimeline = async (req, res) => {
 }
 
 const logWeight = async (req, res) => {
-    const { weight, date } = req.body
-    console.log(typeof weight)
-    if (!weight || typeof weight !== 'number') {
+    const { userWeight, date } = req.body
+    if (!userWeight || typeof userWeight !== 'number') {
         throw new error.BadRequestError('Invalid Weight')
     }
     const { userId } = req.user
-    console.log(userId, date, weight)
-    const newWeightLog = await Weight.create({ userId, date, weight })
+    console.log(userId, date, userWeight)
+    const newWeightLog = await Weight.create({ userId, date, userWeight })
     res.status(StatusCodes.CREATED).json(newWeightLog)
 }
 
