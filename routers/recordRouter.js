@@ -3,11 +3,13 @@ const router = express.Router()
 
 const {
     getPersonRecords, logPersonRecord, updatePersonRecord, removePersonRecord
-} = require('../controllers/prController')
+} = require('../controllers/recordController')
 
 router.route('/')
     .get(getPersonRecords)
     .post(logPersonRecord)
+
+router.route('/:id')
     .patch(updatePersonRecord)
     .delete(removePersonRecord)
 
