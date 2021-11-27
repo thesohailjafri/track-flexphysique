@@ -15,11 +15,14 @@ const schema = new mongoose.Schema({
         required: true,
         uppercase: true
     },
-    liftedWeight: {
-        type: Number,
-        required: true
+    isExeriseHoldType: {
+        type: Boolean,
+        default: false
     },
-    liftedReps: {
+    holdTimeInSec: {
+        type: Number,
+    },
+    reps: {
         type: Number,
         required: true
     },
@@ -34,4 +37,4 @@ const schema = new mongoose.Schema({
 )
 
 
-module.exports = mongoose.model('personal-records', schema)
+module.exports = mongoose.model('calisthenic-records', schema)

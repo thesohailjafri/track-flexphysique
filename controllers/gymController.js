@@ -1,9 +1,9 @@
 const error = require('../errors')
-const Record = require('../models/recordModel')
+const GymRecord = require('../models/gymModel')
 const Weight = require('../models/weightModel')
 const { StatusCodes } = require('http-status-codes')
 
-const getPersonRecords = async (req, res) => {
+const getGymPersonRecords = async (req, res) => {
     const { userId } = req.user
     const { liftedReps, sort, fields, liftedWeight } = req.query
     const queryObject = {}
@@ -18,7 +18,7 @@ const getPersonRecords = async (req, res) => {
     }
 
     //finding data w.r.t query
-    let result = Record.find(queryObject)
+    let result = GymRecord.find(queryObject)
 
     //sorting data
     if (sort) {
@@ -40,26 +40,18 @@ const getPersonRecords = async (req, res) => {
 
 
 
-const logPersonRecord = async (req, res) => {
-    const { liftedWeight, liftedReps, exerciseName, date } = req.body
-    if (!liftedWeight || typeof liftedWeight !== 'number' ||
-        !liftedReps || typeof liftedReps !== 'number' || !exerciseName) {
-        throw new error.BadRequestError('Invalid liftedWeight or liftedReps or exerciseName')
-    }
+const logGymPersonRecord = async (req, res) => {
     const { userId } = req.user
     const currentWeight = await Weight.findOne({ userId }, { userWeight: 1 })
-    const newRecordLog = await Record.create({
+    const newRecordLog = await GymRecord.create({
+        ...req.body,
         userId,
-        date,
-        liftedWeight,
-        exerciseName,
-        liftedReps,
         userWeight: currentWeight.userWeight
     })
     res.status(StatusCodes.CREATED).json(newRecordLog)
 }
 
-const updatePersonRecord = async (req, res) => {
+const updateGymPersonRecord = async (req, res) => {
     const { id: logId } = req.params
     if (!logId) {
         throw new error.BadRequestError('Invalid id')
@@ -70,7 +62,7 @@ const updatePersonRecord = async (req, res) => {
     liftedReps && (updateObject.liftedReps = liftedReps)
 
     const { userId } = req.user
-    const updatedRecord = await Record.findOneAndUpdate({
+    const updatedRecord = await GymRecord.findOneAndUpdate({
         _id: logId,
         userId
     },
@@ -85,14 +77,14 @@ const updatePersonRecord = async (req, res) => {
     res.status(StatusCodes.OK).json(updatedRecord)
 }
 
-const removePersonRecord = async (req, res) => {
+const removeGymPersonRecord = async (req, res) => {
     const { id: logId } = req.params
     if (!logId) {
         throw new error.BadRequestError('Invalid id')
     }
 
     const { userId } = req.user
-    const removedRecord = await Record.findOneAndRemove({
+    const removedRecord = await GymRecord.findOneAndRemove({
         _id: logId,
         userId
     })
@@ -106,5 +98,8 @@ const removePersonRecord = async (req, res) => {
 
 
 module.exports = {
-    getPersonRecords, logPersonRecord, updatePersonRecord, removePersonRecord
+    getGymPersonRecords,
+    logGymPersonRecord,
+    updateGymPersonRecord,
+    removeGymPersonRecord
 }

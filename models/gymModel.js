@@ -1,0 +1,37 @@
+const mongoose = require('mongoose')
+
+const schema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    userWeight: {
+        type: Number,
+        required: true
+    },
+    exerciseName: {
+        type: String,
+        required: true,
+        uppercase: true
+    },
+    liftedWeight: {
+        type: Number,
+        required: true
+    },
+    liftedReps: {
+        type: Number,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now()
+    }
+},
+    {
+        timestamps: true
+    }
+)
+
+
+module.exports = mongoose.model('gym-records', schema)

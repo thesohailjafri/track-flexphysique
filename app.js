@@ -6,7 +6,9 @@ const app = express()
 //routers
 const authRouter = require('./routers/authRouter')
 const weightRouter = require('./routers/weightRouter')
-const recordRouter = require('./routers/recordRouter')
+const gymRouter = require('./routers/gymRouter')
+const calisthenicRouter = require('./routers/calisthenicRouter')
+
 
 
 
@@ -42,7 +44,8 @@ app.get('/', (req, res) => { res.send('Having a good day ee') })
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/weight', authenticationMiddleware, weightRouter)
-app.use('/api/v1/pr', authenticationMiddleware, recordRouter)
+app.use('/api/v1/gym', authenticationMiddleware, gymRouter)
+app.use('/api/v1/calisthenic', authenticationMiddleware, calisthenicRouter)
 
 
 
