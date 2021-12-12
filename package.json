@@ -6,9 +6,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "chart.js": "^2.9.4",
+    "classnames": "^2.3.1",
+    "date-fns": "^2.27.0",
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-chartjs-2": "^2.10.0",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "sass": "^1.44.0",
+    "tailwind": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",

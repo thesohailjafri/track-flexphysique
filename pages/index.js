@@ -1,82 +1,327 @@
+import classNames from 'classnames'
 import Head from 'next/head'
+import LineChart from '../charts/LineChart'
+import { AiOutlineFieldTime } from 'react-icons/ai'
+import { GrFormNextLink } from 'react-icons/gr'
+import FirstLetter from '../components/util/FirstLetter'
+const data = {
+  labels: ['January', 'February', 'March',
+    'April', 'May'],
+  datasets: [
+    {
+      label: 'Squat',
+      fill: false,
+      lineTension: 0.5,
+      backgroundColor: 'rgba(75,192,192,1)',
+      borderColor: 'rgba(96, 165, 250, 1)',
+      borderWidth: 2,
+      data: [165, 159, 180, 181, 156]
+    }, {
+      label: 'Bench',
+      fill: false,
+      lineTension: 0.5,
+      backgroundColor: 'rgba(75,192,192,1)',
+      borderColor: 'rgba(37, 99, 235, 1)',
+      borderWidth: 2,
+      data: [80, 90, 100, 110, 116]
+    }, {
+      label: 'Deadlift',
+      fill: false,
+      lineTension: 0.5,
+      backgroundColor: 'rgba(75,192,192,1)',
+      borderColor: 'rgba(0,0,0,1)',
+      borderWidth: 2,
+      data: [150, 155, 160, 180, 220]
+    }
+  ]
+}
+
+const data1 = {
+  labels: ['January', 'February', 'March',
+    'April', 'May'],
+  datasets: [
+    {
+      label: 'weight',
+      fill: false,
+      lineTension: 0.5,
+      backgroundColor: 'rgba(75,192,192,1)',
+      borderColor: 'rgba(96, 165, 250, 1)',
+      borderWidth: 2,
+      data: [110, 139, 120, 140, 170]
+    }
+  ]
+}
+
+
+
+const optionsThree = {
+  title: {
+    display: true,
+    text: 'Big Three',
+    fontSize: 20
+  },
+  legend: {
+    display: true,
+    position: 'top'
+  },
+
+}
+
+const optionsDead = {
+  title: {
+    display: true,
+    text: 'Deadlift',
+    fontSize: 20
+  },
+  legend: {
+    display: false,
+    position: 'right'
+  }
+}
+
+const optionsSqaut = {
+  title: {
+    display: true,
+    text: 'Squats',
+    fontSize: 20
+  },
+  legend: {
+    display: false,
+    position: 'right'
+  }
+}
+
+const optionsBench = {
+  title: {
+    display: true,
+    text: 'Bench Press',
+    fontSize: 20
+  },
+  legend: {
+    display: false,
+    position: 'right'
+  }
+}
+
+const optionsWeight = {
+  title: {
+    display: true,
+    text: 'Body Weight',
+    fontSize: 20
+  },
+  legend: {
+    display: false,
+    position: 'right'
+  }
+}
+
+
+
+const chartData = {
+  data: data1,
+  options: optionsWeight
+}
+
+const chartData1 = {
+  data: data,
+  options: optionsThree,
+}
+
+const chartData2 = {
+  data: data1,
+  options: optionsSqaut
+}
+const chartData3 = {
+  data: data1,
+  options: optionsBench
+}
+const chartData4 = {
+  data: data1,
+  options: optionsDead
+}
+
+
+const date = new Date().toLocaleDateString()
+
+const weightData = [
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  },
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  },
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  },
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  },
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  },
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  },
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  },
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  },
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  },
+  {
+    weight: 83.3,
+    date,
+    note: 'lorem lorem lorem'
+  }
+]
+
+const number = [1, 2, 3]
+
+const bigthree = [
+  {
+    name: 'Bench Press',
+    oneRepMax: 120,
+    oneRepMaxDate: '12/12/21',
+    isWeighingInKg: true,
+    multiRepMax: 100,
+    multiReps: 8,
+    multiRepMaxDate: '5/12/21',
+  },
+  {
+    name: 'Sqauts',
+    oneRepMax: 140,
+    oneRepMaxDate: '12/12/21',
+    isWeighingInKg: true,
+    multiRepMax: 120,
+    multiReps: 8,
+    multiRepMaxDate: '5/12/21',
+  },
+  {
+    name: 'Deadlift',
+    oneRepMax: 180,
+    oneRepMaxDate: '12/12/21',
+    isWeighingInKg: true,
+    multiRepMax: 140,
+    multiReps: 8,
+    multiRepMaxDate: '5/12/21',
+  }
+]
+
+
+
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Home || TRACK-PR</title>
       </Head>
+      <div className={classNames(
+        'grid gap-y-4'
+      )}>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+        <div className='grid grid-cols-12 gap-x-4'>
+          <div className=' col-span-9 --card'>
+            <LineChart chartData={chartData} />
+          </div>
+          <div className='grid col-span-3 --card gap-y-1'>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            {
+              weightData.slice(0, 6).map((item) => {
+                return (
+                  <div className='flex gap-x-2 items-start'>
+                    <div className='mt-2 text-blue-600'>
+                      <AiOutlineFieldTime size={25} />
+                    </div>
+                    <div className=''>
+                      <div className='inline-flex gap-x-2 items-baseline '>
+                        <span className='first-letter:text-xl'>{item.weight} Kgs</span>
+                        <span className='text-sm text-gray-600'>({item.date})</span>
+                      </div>
+                      <div className=' text-gray-600'>{item.note}</div>
+                    </div>
+                  </div>
+                )
+              })
+            }
+            <div className='flex justify-between items-end'>
+              <div className='inline-flex justify-center gap-x-1 mt-2 '>
+                {number.map((item) => {
+                  return (
+                    <span className=' bg-blue-400 w-6 h-6 text-center rounded-sm text-white cursor-pointer'>{item}</span>
+                  )
+                })}
+              </div>
+              <span className='inline bg-blue-400 h-6 text-center rounded-sm text-white cursor-pointer px-2'>
+                View All
+              </span>
+            </div>
+          </div>
         </div>
-      </main>
 
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
-    </div>
+        <div className='grid grid-cols-12 gap-x-4'>
+          <div className=' col-span-9  --card'>
+            <LineChart chartData={chartData1} />
+          </div>
+          <div className=' col-span-3 grid gap-y-4'>
+            {bigthree.map((item) => {
+              return (
+                <div className=' --card flex flex-col justify-between'>
+                  <div className=' text-blue-600 flex justify-between items-end'>
+                    <span className=' first-letter:text-xl'>
+                      {item.name}
+                    </span>
+                    <span className='text-sm cursor-pointer'>
+                      View All <GrFormNextLink className='inline' />
+                    </span>
+                  </div>
+                  <div>1 Rep Max : {item.oneRepMax} {item.isWeighingInKg ? 'Kgs' : 'Lbs'}</div>
+                  <div>Multi Reps Max : {item.multiRepMax} {item.isWeighingInKg ? 'Kgs' : 'Lbs'} X {item.multiReps} </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+
+        <div className='text-xl border-b-2'>
+          Favourite Movements
+        </div>
+
+        <div className='grid grid-cols-12 gap-x-4'>
+          <div className=' col-span-4  --card'>
+            <LineChart chartData={chartData2} />
+          </div>
+          <div className=' col-span-4 --card'>
+            <LineChart chartData={chartData3} />
+          </div>
+          <div className=' col-span-4  --card'>
+            <LineChart chartData={chartData4} />
+          </div>
+        </div>
+
+      </div>
+    </>
   )
 }

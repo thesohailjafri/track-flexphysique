@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.--dropdown {
+    @apply p-2 rounded w-full bg-white shadow-lg;
+
+    &::before {
+        content: '';
+        z-index: 1;
+        @apply h-4 w-4 rounded-sm absolute block transform -translate-y-3 rotate-45;
+        background: linear-gradient(to bottom right, white 50%, transparent 50%);
+    }
+
+    .--dropdown-item-title {
+        @apply text-lg font-medium
+    }
+
+    .--dropdown-item-meta {
+        @apply text-sm font-normal
+    }
+}
+
+
+
+.--dropdown-underline {
+    @apply border-b-4 transition-all duration-300 border-opacity-0 pb-2 mb-1;
+}
+
+.--dropdown-underline.--dropdown-underline-show {
+    @apply border-blue-600 border-opacity-100;
+}
+
+.--dropdown-underline.--dropdown-underline-hide {
+    @apply border-blue-400 border-opacity-100;
+}
+
+.--dropdown-item {
+    @apply p-2 rounded;
+    width: 300px;
+
+    &:hover {
+        @apply bg-blue-50
+    }
+}
