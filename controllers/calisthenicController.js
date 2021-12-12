@@ -3,6 +3,8 @@ const CalisthenicRecord = require('../models/calisthenicModel')
 const Weight = require('../models/weightModel')
 const { StatusCodes } = require('http-status-codes')
 
+
+//TEST
 const getCaliPersonRecords = async (req, res) => {
     const { userId } = req.user
     const { exerciseName, reps, sort, fields } = req.query
@@ -37,8 +39,6 @@ const getCaliPersonRecords = async (req, res) => {
     const logRecord = await result
     res.status(StatusCodes.OK).json(logRecord)
 }
-
-
 
 const logCaliPersonRecord = async (req, res) => {
     const { userId } = req.user
