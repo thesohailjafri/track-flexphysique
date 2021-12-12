@@ -3,7 +3,8 @@ import Head from 'next/head'
 import LineChart from '../charts/LineChart'
 import { AiOutlineFieldTime } from 'react-icons/ai'
 import { GrFormNextLink } from 'react-icons/gr'
-import FirstLetter from '../components/util/FirstLetter'
+import { BsBookmarkHeartFill } from 'react-icons/bs'
+
 const data = {
   labels: ['January', 'February', 'March',
     'April', 'May'],
@@ -305,18 +306,27 @@ export default function Home() {
         </div>
 
 
-        <div className='text-xl border-b-2'>
-          Favourite Movements
+        <div className='flex items-center gap-x-2'>
+          <BsBookmarkHeartFill className='inline text-blue-600' size={25} />
+          <span className='text-xl font-semibold my-1'>
+            Favourite Movements
+          </span>
         </div>
 
         <div className='grid grid-cols-12 gap-x-4'>
-          <div className=' col-span-4  --card'>
+          <div className=' col-span-6  --card'>
             <LineChart chartData={chartData2} />
           </div>
-          <div className=' col-span-4 --card'>
+          <div className=' col-span-6 --card'>
             <LineChart chartData={chartData3} />
           </div>
-          <div className=' col-span-4  --card'>
+        </div>
+
+        <div className='grid grid-cols-12 gap-x-4'>
+          <div className=' col-span-6  --card'>
+            <LineChart chartData={chartData4} />
+          </div>
+          <div className=' col-span-6  --card'>
             <LineChart chartData={chartData4} />
           </div>
         </div>
