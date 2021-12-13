@@ -2,6 +2,8 @@ import 'tailwindcss/tailwind.css'
 import '../styles/global.scss'
 import '../styles/util.scss'
 import '../styles/dropdown.scss'
+import 'react-big-calendar/lib/css/react-big-calendar.css'
+
 import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }) {

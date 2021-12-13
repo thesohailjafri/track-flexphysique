@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import Head from 'next/head'
 import LineChart from '../charts/LineChart'
+import Calender from '../components/util/Calender'
 import { AiOutlineFieldTime } from 'react-icons/ai'
 import { GrFormNextLink } from 'react-icons/gr'
 import { BsBookmarkHeartFill } from 'react-icons/bs'
@@ -330,6 +331,12 @@ export default function Home() {
             <LineChart chartData={chartData4} />
           </div>
         </div>
+
+        <div className='--card'>
+          <Calender />
+        </div>
+
+
 
       </div>
     </>

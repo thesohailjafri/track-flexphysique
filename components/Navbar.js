@@ -86,11 +86,34 @@ const navigations = {
     explore: 'explore',
     post: 'post',
     gym: 'gym',
-    cali: 'cali',
+    calisthentic: 'calisthentic',
     weight: 'weight',
     about: 'about',
     profile: 'profile',
 }
+
+const navigationsMain = [
+    {
+        name: 'Explore',
+        link: navigations.explore,
+    },
+    {
+        name: 'Post',
+        link: navigations.post,
+    },
+    {
+        name: 'Gym',
+        link: navigations.gym,
+    },
+    {
+        name: 'Calisthentic',
+        link: navigations.calisthentic,
+    },
+    {
+        name: 'Weight Management',
+        link: navigations.weight,
+    },
+]
 
 export default function Navbar() {
     const router = useRouter()
@@ -152,85 +175,27 @@ export default function Navbar() {
                 </ul>
 
                 <ul className="flex gap-x-8">
-                    <Link href='/explore'>
-                        <li
-                            onMouseEnter={() => handelOnMouseEnter(navigations.explore)}
-                            onMouseLeave={() => handelOnMouseLeave(navigations.explore)}
-                            className={classNames(
-                                ' --dropdown-underline',
-                                {
-                                    '--dropdown-underline-show': isOnWhatPage === navigations.explore,
-                                },
-                                {
-                                    '--dropdown-underline-hide': isHoveredOn === navigations.explore,
-                                }
-                            )}
-                        >
-                            Explore</li>
-                    </Link>
-                    <Link href='/post'>
-                        <li
-                            onMouseEnter={() => handelOnMouseEnter(navigations.post)}
-                            onMouseLeave={() => handelOnMouseLeave(navigations.post)}
-                            className={classNames(
-                                ' --dropdown-underline',
-                                {
-                                    '--dropdown-underline-show': isOnWhatPage === navigations.post,
-                                },
-                                {
-                                    '--dropdown-underline-hide': isHoveredOn === navigations.post,
-                                }
-                            )}
-                        >Post</li>
-                    </Link>
-                    <Link href='/gym'>
-                        <li
-                            onMouseEnter={() => handelOnMouseEnter(navigations.gym)}
-                            onMouseLeave={() => handelOnMouseLeave(navigations.gym)}
-                            className={classNames(
-                                ' --dropdown-underline',
-                                {
-                                    '--dropdown-underline-show': isOnWhatPage === navigations.gym,
-                                },
-                                {
-                                    '--dropdown-underline-hide': isHoveredOn === navigations.gym,
-                                }
-                            )}
-                        >Gym</li>
-                    </Link>
-                    <Link href='/post'>
-                        <li
-                            onMouseEnter={() => handelOnMouseEnter(navigations.cali)}
-                            onMouseLeave={() => handelOnMouseLeave(navigations.cali)}
-                            className={classNames(
-                                ' --dropdown-underline',
-                                {
-                                    '--dropdown-underline-show': isOnWhatPage === navigations.cali,
-                                },
-                                {
-                                    '--dropdown-underline-hide': isHoveredOn === navigations.cali,
-                                }
-                            )}
-                        >Calisthenics</li>
-                    </Link>
-                    <Link href='/weight'>
-                        <li
-                            onMouseEnter={() => handelOnMouseEnter(navigations.weight)}
-                            onMouseLeave={() => handelOnMouseLeave(navigations.weight)}
-                            className={classNames(
-                                '--dropdown-underline',
-                                {
-                                    ' --dropdown-underline-show': isOnWhatPage === navigations.weight,
-                                },
-                                {
-                                    '--dropdown-underline-hide': isHoveredOn === navigations.weight,
-                                }
-                            )}
-                        >
-                            Weight Management
-                        </li>
-                    </Link>
-
+                    {navigationsMain.map((item, index) => {
+                        return (
+                            <Link href={`/${item.link}`}>
+                                <li
+                                    onMouseEnter={() => handelOnMouseEnter(item.link)}
+                                    onMouseLeave={() => handelOnMouseLeave(item.link)}
+                                    className={classNames(
+                                        ' --dropdown-underline',
+                                        {
+                                            '--dropdown-underline-show': isOnWhatPage === item.link,
+                                        },
+                                        {
+                                            '--dropdown-underline-hide': isHoveredOn === item.link,
+                                        }
+                                    )}
+                                >
+                                    {item.name}
+                                </li>
+                            </Link>
+                        )
+                    })}
                 </ul>
 
                 <ul>
