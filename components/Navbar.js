@@ -174,10 +174,10 @@ export default function Navbar() {
                     </Link>
                 </ul>
 
-                <ul className="flex gap-x-8">
+                <ul className="hidden md:flex gap-x-8  ">
                     {navigationsMain.map((item, index) => {
                         return (
-                            <Link href={`/${item.link}`}>
+                            <Link href={`/${item.link}`} key={index}>
                                 <li
                                     onMouseEnter={() => handelOnMouseEnter(item.link)}
                                     onMouseLeave={() => handelOnMouseLeave(item.link)}

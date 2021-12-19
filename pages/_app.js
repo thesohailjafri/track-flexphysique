@@ -8,9 +8,9 @@ import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <body className='bg-gray-100 h-screen'>
+    <body className='bg-gray-300 h-screen '>
       <Layout>
-        <main className="container mx-auto max-w-5xl">
+        <main className="container mx-auto max-w-5xl px-2">
           <Component {...pageProps} />
         </main>
       </Layout>
