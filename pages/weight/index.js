@@ -43,6 +43,8 @@ export default function track() {
             </div>
             <div className="col-span-4 flex flex-col gap-4 items-center">
                 <WeightInputBox />
+                <LogNote />
+
                 <button className='bg-blue-600 text-white p-2 rounded w-32'>Add Log</button>
             </div>
 
