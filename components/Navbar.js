@@ -85,8 +85,7 @@ const navigations = {
     home: '',
     explore: 'explore',
     post: 'post',
-    gym: 'gym',
-    calisthentic: 'calisthentic',
+    exercise: 'exercise',
     weight: 'weight',
     about: 'about',
     profile: 'profile',
@@ -102,13 +101,10 @@ const navigationsMain = [
         link: navigations.post,
     },
     {
-        name: 'Gym',
-        link: navigations.gym,
+        name: 'Exercise',
+        link: navigations.exercise,
     },
-    {
-        name: 'Calisthentic',
-        link: navigations.calisthentic,
-    },
+
     {
         name: 'Weight Management',
         link: navigations.weight,
@@ -152,15 +148,16 @@ export default function Navbar() {
     }, [router])
 
     return (
-        <nav className='px-6 bg-white shadow-sm mb-4'>
+        <nav className='px-6 bg-white shadow-sm mb-4 '>
 
-            <ul className="flex justify-between gap-x-4 pt-4 text-lg font-medium  max-w-5xl mx-auto">
+            <ul className="flex justify-between gap-x-4 pt-4 text-lg font-medium  max-w-5xl mx-auto px-2">
                 <ul>
                     <Link href='/'>
                         <li
                             onMouseEnter={() => handelOnMouseEnter(navigations.home)}
                             onMouseLeave={() => handelOnMouseLeave(navigations.home)}
                             className={classNames(
+                                'text-2xl',
                                 '--dropdown-underline',
                                 {
                                     '--dropdown-underline-show': isOnWhatPage === navigations.home,
@@ -170,7 +167,7 @@ export default function Navbar() {
                                 }
                             )}
                         >
-                            TRACKfp</li>
+                            FlexPhysique</li>
                     </Link>
                 </ul>
 

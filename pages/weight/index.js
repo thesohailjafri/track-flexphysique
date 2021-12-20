@@ -38,14 +38,14 @@ export default function track() {
     return (
         <div className='grid gap-4 grid-cols-12'
         >
-            <div className="flex flex-col gap-4 items-center col-span-full">
+            <div className='--card col-span-8'>
+                <LineChart chartData={chartData1} />
+            </div>
+            <div className="col-span-4 flex flex-col gap-4 items-center">
                 <WeightInputBox />
                 <button className='bg-blue-600 text-white p-2 rounded w-32'>Add Log</button>
             </div>
 
-            <div className='--card col-span-full'>
-                <LineChart chartData={chartData1} />
-            </div>
             <div className='--card col-span-full'>
                 <Calender />
             </div>

@@ -244,10 +244,10 @@ export default function Home() {
       )}>
 
         <div className='grid grid-cols-12 gap-x-4'>
-          <div className=' col-span-9 --card'>
+          <div className=' col-span-8 --card'>
             <LineChart chartData={chartData} />
           </div>
-          <div className='grid col-span-3 --card gap-y-1'>
+          <div className='grid col-span-4 --card gap-y-1'>
 
             {
               weightData.slice(0, 6).map((item) => {
@@ -283,10 +283,10 @@ export default function Home() {
         </div>
 
         <div className='grid grid-cols-12 gap-x-4'>
-          <div className=' col-span-9  --card'>
+          <div className=' col-span-8  --card'>
             <LineChart chartData={chartData1} />
           </div>
-          <div className=' col-span-3 grid gap-y-4'>
+          <div className=' col-span-4 grid gap-y-4'>
             {bigthree.map((item) => {
               return (
                 <div className=' --card flex flex-col justify-between'>

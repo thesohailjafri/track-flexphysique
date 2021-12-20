@@ -5,7 +5,6 @@ import WeightInputBox from '../../components/mini/WeightInputBox'
 import LiftingWeightInputBox from '../../components/mini/LiftingWeightInputBox'
 import ExerciseDropdown from '../../components/mini/ExerciseDropdown'
 import LogNote from '../../components/mini/LogNote'
-import CaliInputBox from '../../components/mini/CaliInputBox'
 const data = {
     labels: ['January', 'February', 'March',
         'April', 'May'],
@@ -37,21 +36,27 @@ const chartData1 = {
     data: data,
     options: optionsThree,
 }
-export default function cali() {
+export default function gym() {
     return (
         <div className='grid gap-4 grid-cols-12'
         >
-            <div className="grid gap-4 justify-center col-span-full">
-                <ExerciseDropdown />
-                <CaliInputBox />
-                <LogNote />
-                <button className='bg-blue-600 text-white p-2 rounded w-80'>Add Log</button>
-
-            </div>
-
-            <div className='--card col-span-full'>
+            <div className='--card col-span-8'>
                 <LineChart chartData={chartData1} />
             </div>
+            <div className="grid gap-4 justify-center col-span-4">
+                <ExerciseDropdown />
+                <WeightInputBox />
+                <LiftingWeightInputBox />
+                <LogNote />
+                <button className='bg-blue-600 text-white p-2 rounded w-80'>Add Log</button>
+                <div className='inline-flex justify-between'>
+                    <button className='bg-blue-600 text-white p-2 rounded w-40'>Hide Calculator</button>
+                    <button className='bg-blue-600 text-white p-2 rounded w-36'>Add Exericse</button>
+                </div>
+
+            </div>
+
+
             <div className='--card col-span-full'>
                 <Calender />
             </div>

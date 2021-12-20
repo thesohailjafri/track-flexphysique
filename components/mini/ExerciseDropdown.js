@@ -3,12 +3,12 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 
 const people = [
-    { name: 'Wade Cooper' },
-    { name: 'Arlene Mccoy' },
-    { name: 'Devon Webb' },
-    { name: 'Tom Cook' },
-    { name: 'Tanya Fox' },
-    { name: 'Hellen Schmidt' },
+    { name: 'Deadlift' },
+    { name: 'Squats' },
+    { name: 'Bench Press' },
+    { name: 'Overhead Press' },
+    { name: 'Planches' },
+    { name: 'Handstand' },
 ]
 
 export default function ExerciseDropdown() {
